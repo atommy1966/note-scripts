@@ -25,13 +25,13 @@ font_prop_title = fm.FontProperties(fname=font_path, size=18)
 font_prop_small = fm.FontProperties(fname=font_path, size=12)
 font_prop_header = fm.FontProperties(fname=font_path, size=13)
 
-# Colors - dark theme
-BG_COLOR = '#1a1a2e'
-CELL_BG = '#16213e'
-HEADER_BG = '#0f3460'
+# Colors - white theme
+BG_COLOR = 'white'
+CELL_BG = '#f5f5f5'
+HEADER_BG = '#2c3e50'
 ACCENT = '#e94560'
-TEXT_COLOR = '#eaeaea'
-HIGHLIGHT_COLOR = '#53d769'
+TEXT_COLOR = '#333333'
+HIGHLIGHT_COLOR = '#27ae60'
 
 OUT_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -84,10 +84,10 @@ def draw_table(data, col_labels, row_labels, title, filename,
 
     # Style cells
     for (row, col), cell in table.get_celld().items():
-        cell.set_edgecolor('#2a2a4a')
+        cell.set_edgecolor('#cccccc')
         cell.set_linewidth(1.2)
         if row == 0:  # header row (colLabels)
-            cell.set_text_props(fontproperties=font_prop_header, color=TEXT_COLOR,
+            cell.set_text_props(fontproperties=font_prop_header, color='white',
                                fontweight='bold')
             cell.set_facecolor(HEADER_BG)
             cell.set_height(0.12)
@@ -121,8 +121,8 @@ def draw_table(data, col_labels, row_labels, title, filename,
 def draw_cover():
     """Create cover image 1280x670."""
     fig, ax = plt.subplots(figsize=(12.8, 6.7))
-    fig.patch.set_facecolor('#0a0a1a')
-    ax.set_facecolor('#0a0a1a')
+    fig.patch.set_facecolor('white')
+    ax.set_facecolor('white')
     ax.axis('off')
     ax.set_xlim(0, 12.8)
     ax.set_ylim(0, 6.7)
@@ -143,10 +143,10 @@ def draw_cover():
     fp_tag = fm.FontProperties(fname=font_path, size=16)
 
     ax.text(6.4, 4.8, 'GLM-5.1 vs Claude Opus vs Sonnet',
-            fontproperties=fp_title, color='#ffffff',
+            fontproperties=fp_title, color='#1a1a2e',
             ha='center', va='center', fontweight='bold')
     ax.text(6.4, 3.8, '実戦比較レポート',
-            fontproperties=fp_sub, color=TEXT_COLOR,
+            fontproperties=fp_sub, color='#333333',
             ha='center', va='center')
 
     # Model names
@@ -159,12 +159,12 @@ def draw_cover():
 
     # Tagline
     ax.text(6.4, 1.4, '基礎問はほぼ互角 ｜ 難問で差が開いた ｜ 年間18万円の節約',
-            fontproperties=fp_tag, color='#aaaaaa',
+            fontproperties=fp_tag, color='#666666',
             ha='center', va='center')
 
     # Bottom tag
     ax.text(6.4, 0.7, '同一プロンプト × 10問 × 5点満点評価',
-            fontproperties=fp_tag, color='#666666',
+            fontproperties=fp_tag, color='#999999',
             ha='center', va='center')
 
     filepath = os.path.join(OUT_DIR, 'cover.png')
@@ -244,7 +244,7 @@ if __name__ == '__main__':
     # Table 5: Before/After コスト比較
     draw_table(
         data=[
-            ['Max $220/月', 'Max $100/月（予定）'],
+            ['Max $220/月', 'Max 税込10〜20万円/年'],
             ['なし', 'Pro $252/年'],
             ['約40万円', '約22万円'],
             ['—', '▲約18万円/年'],
