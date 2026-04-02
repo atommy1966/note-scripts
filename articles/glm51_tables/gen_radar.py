@@ -49,10 +49,10 @@ COLORS = {
     'sonnet': '#3498db',  # blue
     'glm':    '#2ecc71',  # green
 }
-BG_COLOR = 'white'
-AXES_BG = 'white'
-GRID_COLOR = '#cccccc'
-TEXT_COLOR = '#333333'
+BG_COLOR = '#1a1a2e'
+AXES_BG = '#16213e'
+GRID_COLOR = '#444466'
+TEXT_COLOR = '#e0e0e0'
 
 def make_radar(labels, opus_vals, sonnet_vals, glm_vals, title, filename):
     N = len(labels)
@@ -70,7 +70,7 @@ def make_radar(labels, opus_vals, sonnet_vals, glm_vals, title, filename):
     # Draw grid
     ax.set_ylim(0, 5.5)
     ax.set_yticks([1, 2, 3, 4, 5])
-    ax.set_yticklabels(['1', '2', '3', '4', '5'], fontsize=9, color=TEXT_COLOR,
+    ax.set_yticklabels(['1', '2', '3', '4', '5'], fontsize=9, color='#999999',
                        fontproperties=font_prop)
     ax.set_xticks(angles[:-1])
     ax.set_xticklabels(labels, fontsize=13, color=TEXT_COLOR, fontproperties=font_prop_bold)
@@ -90,9 +90,9 @@ def make_radar(labels, opus_vals, sonnet_vals, glm_vals, title, filename):
 
     # Legend
     leg = ax.legend(loc='upper right', bbox_to_anchor=(1.25, 1.1), fontsize=11,
-                    prop=font_prop, framealpha=0.9, facecolor='white', edgecolor='#cccccc')
+                    prop=font_prop, framealpha=0.9, facecolor='#1a1a2e', edgecolor='#444466')
     for text in leg.get_texts():
-        text.set_color('#333333')
+        text.set_color('#e0e0e0')
 
     # Title
     ax.set_title(title, fontsize=16, color=TEXT_COLOR, fontproperties=font_prop_bold,
