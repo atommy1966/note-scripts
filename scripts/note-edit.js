@@ -880,23 +880,29 @@ async function applyMarkdownToEditor(page, markdownText) {
       // Markdown image reference: upload if local file exists, skip external URLs
       if (inList) { await page.keyboard.press('Enter'); inList = false; }
       if (inQuote) { await page.keyboard.press('Enter'); inQuote = false; }
-      const imgMatch = line.trim().match(/^!\[.*?\]\((.+?)\)/);
-      const imgPath = imgMatch ? imgMatch[1] : null;
+      const imgMatch = line.trim().match(/^!\[(.*?)\]\((.+?)\)/);
+      const imgPath = imgMatch ? imgMatch[2] : null;
+      const imgCaption = imgMatch ? imgMatch[1] : '';
       if (imgPath && !imgPath.startsWith('http')) {
         const path = require('path');
         const absPath = path.resolve(imgPath);
         if (fs.existsSync(absPath)) {
-          console.log('[markdown] 画像を挿入:', absPath);
+          console.log('[markdown] 画像を挿入:', absPath, imgCaption ? `caption: ${imgCaption}` : '');
           // Move cursor to end of typed content, then upload via clipboard (no cursor displacement)
           await page.keyboard.press('Control+End');
           await page.waitForTimeout(200);
           await uploadImage(page, absPath, { skipClick: true });
           // After upload+save, re-focus editor (save button click steals focus)
-          // then exit figcaption by pressing Enter (creates new paragraph after figure)
+          // then type caption into figcaption if present
           await page.focus('.ProseMirror');
           await page.waitForTimeout(300);
           await page.keyboard.press('Control+End');  // move to end (figcaption of last image)
           await page.waitForTimeout(200);
+          if (imgCaption) {
+            // Type caption text into figcaption field
+            await page.keyboard.type(imgCaption);
+            await page.waitForTimeout(300);
+          }
           await page.keyboard.press('Enter');  // exit figcaption → new paragraph created
           await page.waitForTimeout(200);
         } else {
