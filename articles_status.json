@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-05T12:10:00+09:00",
+  "last_updated": "2026-04-05T14:40:00+09:00",
   "source": "cmd_1167 subtask_1167a — note.com公開済み22記事（スクショ確認）+未投稿5記事 → cmd_1168で5件下書き投稿済み",
   "articles": [
     {
@@ -317,12 +317,22 @@
       "note_id": "n006f337d0dee",
       "draft_posted_at": "2026-04-05T11:56:00+09:00",
       "note": "cmd_1171で下書き投稿。cmd_1174でカバー画像+ハッシュタグ追加。"
+    },
+    {
+      "filename": "multi_agent_shogun_system.md",
+      "title": "AIエージェント8体で YouTube切り抜きチャンネルを運営したら、登録者1,000人を超えた話",
+      "status": "draft",
+      "category": "C",
+      "note_url": "https://note.com/n/n01f6114f3566",
+      "note_id": "n01f6114f3566",
+      "draft_posted_at": "2026-04-05T14:40:00+09:00",
+      "note": "cmd_1178で下書き投稿。cmd_1176で軍師リライト版。カバー画像+ハッシュタグ付き。"
     }
   ],
   "summary": {
-    "total": 42,
+    "total": 43,
     "published": 21,
-    "draft": 16,
+    "draft": 17,
     "duplicate": 5
   }
 }
