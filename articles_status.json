@@ -1,0 +1,328 @@
+{
+  "last_updated": "2026-04-05T11:56:00+09:00",
+  "source": "cmd_1167 subtask_1167a — note.com公開済み22記事（スクショ確認）+未投稿5記事 → cmd_1168で5件下書き投稿済み",
+  "articles": [
+    {
+      "filename": "aac_frame_drift.md",
+      "title": "動画を分割したら4.5秒ズレた（と思った）話",
+      "status": "published",
+      "category": "C",
+      "note": "cmd_862でnote下書き投稿→公開済み"
+    },
+    {
+      "filename": "ai_auto_post.md",
+      "title": "この記事、AIが書いてAIが投稿しました",
+      "status": "published",
+      "category": "C"
+    },
+    {
+      "filename": "ai_model_comparison.md",
+      "title": "GPT・Gemini・Claude、用途別にまとめたら？最新3モデル完全比較",
+      "status": "published",
+      "category": "C"
+    },
+    {
+      "filename": "ai_short_selection_fail.md",
+      "title": "AIが選んだショート5本中4本がつまらなかった話",
+      "status": "published",
+      "category": "C",
+      "note": "note_netaでは殿レビュー待ち（下書き）→公開済み"
+    },
+    {
+      "filename": "competitor_analysis.md",
+      "title": "AIに競合14チャンネルを丸裸にさせた話 — 量産型は負けていた",
+      "status": "published",
+      "category": "C"
+    },
+    {
+      "filename": "competitor_analysis_part2.md",
+      "title": "1万再生なのに登録者23人だった話 — AIに原因を聞いたら身も蓋もなかった",
+      "status": "published",
+      "category": "C"
+    },
+    {
+      "filename": "ec_tool_promo.md",
+      "title": "ECサイトの商品説明を自動生成するGASツールを使って",
+      "status": "published",
+      "category": "A"
+    },
+    {
+      "filename": "email_reply_tool_story_v3.md",
+      "title": "メール返信に30分かかっていませんか？AIが5分で代わりに書いてくれるツールを作りました",
+      "status": "published",
+      "category": "A",
+      "note": "v3が公開版。v1/v2は旧版"
+    },
+    {
+      "filename": "embedding2_intro.md",
+      "title": "Gemini Embedding 2 — テキストも画像も動画も、ぜんぶ同じ「意味」で検索できるAIが出た",
+      "status": "published",
+      "category": "A"
+    },
+    {
+      "filename": "gemini_22000yen.md",
+      "title": "AIに漫画を描かせすぎて、Googleから2万7千円の請求が来た話",
+      "status": "published",
+      "category": "C"
+    },
+    {
+      "filename": "glm51_vs_opus_real_comparison.md",
+      "title": "GLM-5.1 vs Claude Opus 4.6 vs Sonnet — 年18万円節約した3モデル比較",
+      "status": "published",
+      "category": "C",
+      "note": "z.ai紹介リンク付き"
+    },
+    {
+      "filename": "gpt5_4_review.md",
+      "title": "GPT-5.4を待ったから — AI開発者が感じた可能性と限界",
+      "status": "published",
+      "category": "C"
+    },
+    {
+      "filename": "gpu_no_more.md",
+      "title": "RTX 4060 Ti買った翌週に、GPUなしで全部できると気づいた話",
+      "status": "published",
+      "category": "C",
+      "note": "note_netaでは殿レビュー待ち（下書き）→公開済み"
+    },
+    {
+      "filename": "knowledge_verification.md",
+      "title": "AIが書いたドキュメントをAIに検証させたら16件の矛盾が見つかった話",
+      "status": "published",
+      "category": "C"
+    },
+    {
+      "filename": "nikukyuu_steak_trap.md",
+      "title": "全パネルにステーキが描かれていた — AI画像生成の罠",
+      "status": "published",
+      "category": "C"
+    },
+    {
+      "filename": "prompt_200_broken.md",
+      "title": "200本のプロンプトをAIに書かせたら151本壊れた話",
+      "status": "published",
+      "category": "C"
+    },
+    {
+      "filename": "qc_telephone_game.md",
+      "title": "「これダメ」の温度感が3次伝達で消える — AIエージェント間の伝言ゲームでQCが形骸化する理由",
+      "status": "published",
+      "category": "C"
+    },
+    {
+      "filename": "rule_based_trap.md",
+      "title": "4人いるのに2人しか出ない — 自動化の落とし穴はAIじゃなくてif文だった",
+      "status": "published",
+      "category": "C"
+    },
+    {
+      "filename": "same_pose_trap.md",
+      "title": "AIに漫画を描かせたら同じポーズばかりになった話",
+      "status": "published",
+      "category": "C"
+    },
+    {
+      "filename": "silent_bug_contradiction_detection.md",
+      "title": "動くのに壊れている — AIが書いたコードの見えないバグ",
+      "status": "draft",
+      "category": "C",
+      "note_url": "https://note.com/n/n0a146e6827b8",
+      "note_id": "n0a146e6827b8",
+      "draft_posted_at": "2026-04-05T11:50:00+09:00",
+      "note": "cmd_1171で下書き投稿。カバー画像なし（GEMINI_API_KEY期限切れ）。ハッシュタグ未設定。"
+    },
+    {
+      "filename": "subtask_714a_embedding.md",
+      "title": "Gemini Embedding 2を実戦投入した — 表情選定からサムネ品質判定まで全部無料",
+      "status": "published",
+      "category": "C"
+    },
+    {
+      "filename": "youtube_8to100_in_6days.md",
+      "title": "AIエージェント8体でYouTube切り抜きチャンネルを6日間運営したら、登録者8人→100人を超えた話",
+      "status": "published",
+      "category": "C"
+    },
+    {
+      "filename": "dictionary_file_dead.md",
+      "title": "設定ファイルを作ったのに誰も読んでいなかった話",
+      "status": "draft",
+      "category": "C",
+      "priority": "high",
+      "note_url": "https://note.com/n/nbaad4bee9972",
+      "note_id": "nbaad4bee9972",
+      "draft_posted_at": "2026-04-05T11:15:00+09:00",
+      "note": "cmd_1168で下書き投稿済み。ハッシュタグ未設定（手動追加必要）"
+    },
+    {
+      "filename": "embedding2_receipt.md",
+      "title": "確定申告の領収書300枚、スマホで撮ったらAIが勝手に仕分けてくれた話",
+      "status": "draft",
+      "category": "A",
+      "priority": "high",
+      "note_url": "https://note.com/n/ne8bb547f637f",
+      "note_id": "ne8bb547f637f",
+      "draft_posted_at": "2026-04-05T11:20:00+09:00",
+      "note": "cmd_1168で下書き投稿済み。ハッシュタグ未設定（手動追加必要）"
+    },
+    {
+      "filename": "embedding2_techbook.md",
+      "title": "技術書PDF 50冊をAIに食わせたら、図表もコード例も全部横断検索できるようになった",
+      "status": "draft",
+      "category": "A",
+      "priority": "high",
+      "note_url": "https://note.com/n/nb36fcbc291c5",
+      "note_id": "nb36fcbc291c5",
+      "draft_posted_at": "2026-04-05T11:25:00+09:00",
+      "note": "cmd_1168で下書き投稿済み。ハッシュタグ未設定（手動追加必要）"
+    },
+    {
+      "filename": "harness_engineering.md",
+      "title": "AIの性能は、AIそのものでは決まらない",
+      "status": "draft",
+      "category": "C",
+      "priority": "high",
+      "note_url": "https://note.com/n/nb34c3df0f495",
+      "note_id": "nb34c3df0f495",
+      "draft_posted_at": "2026-04-05T11:30:00+09:00",
+      "note": "cmd_1168で下書き投稿済み。ハッシュタグ未設定（手動追加必要）"
+    },
+    {
+      "filename": "youtube_comment_scene_search.md",
+      "title": "YouTubeコメント欄で視聴者からシーン検索リクエストが来た話",
+      "status": "draft",
+      "category": "C",
+      "priority": "high",
+      "note_url": "https://note.com/n/n4c0931f18fa6",
+      "note_id": "n4c0931f18fa6",
+      "draft_posted_at": "2026-04-05T11:35:00+09:00",
+      "note": "cmd_1168で下書き投稿済み。ハッシュタグ未設定（手動追加必要）"
+    },
+    {
+      "filename": "email_reply_tool_story.md",
+      "title": "GASとGeminiで「メール返信AI」を作った話 — 30分かかっていた返信が5分になった",
+      "status": "duplicate",
+      "category": "A",
+      "note": "v1。v3が公開版"
+    },
+    {
+      "filename": "email_reply_tool_story_v2.md",
+      "title": "ビジネスメール1通に30分かけていた（v2）",
+      "status": "duplicate",
+      "category": "A",
+      "note": "v2中間版。v3が公開版"
+    },
+    {
+      "filename": "email_reply_tool_v3_rebuilt.md",
+      "title": "メール返信に30分かかっていませんか？（v3 rebuilt）",
+      "status": "duplicate",
+      "category": "A",
+      "note": "v3再構築版。email_reply_tool_story_v3.mdと同内容"
+    },
+    {
+      "filename": "email_reply_tool_v3_textonly.md",
+      "title": "メール返信に30分かかっていませんか？（v3 text-only）",
+      "status": "duplicate",
+      "category": "A",
+      "note": "v3テキストのみ版。email_reply_tool_story_v3.mdと同内容"
+    },
+    {
+      "filename": "youtube_search_note_draft.md",
+      "title": "YouTubeコメント欄で視聴者からリクエストが来た（下書き版）",
+      "status": "duplicate",
+      "category": "C",
+      "note": "youtube_comment_scene_search.mdの初期版"
+    },
+    {
+      "filename": "work/drafts_20260404/01_harness_engineering.md",
+      "title": "AIに\"ルール読め\"って書いても読まない。だから仕組みで殴る",
+      "status": "draft",
+      "category": "C"
+    },
+    {
+      "filename": "work/drafts_20260404/02_skill_placement.md",
+      "title": "Claude Codeのスキルが発動しない？置き場所1つで全部変わった",
+      "status": "draft",
+      "category": "C"
+    },
+    {
+      "filename": "work/drafts_20260404/03_ai_cant_find_code.md",
+      "title": "AIエージェントが自分のコードベースを探索できない話",
+      "status": "draft",
+      "category": "C"
+    },
+    {
+      "filename": "work/drafts_20260404/04_cdp_manga_prompt.md",
+      "title": "Geminiに漫画を描かせるプロンプト設計 — 試行錯誤20回の記録",
+      "status": "draft",
+      "category": "C"
+    },
+    {
+      "filename": "work/drafts_20260404/05_telephone_game.md",
+      "title": "マルチエージェントの\"伝言ゲーム問題\"と対策",
+      "status": "draft",
+      "category": "C"
+    },
+    {
+      "filename": "01_harness_engineering.md",
+      "source_dir": "work/drafts_20260404",
+      "title": "AIに\"ルール読め\"って書いても読まない。だから仕組みで殴る",
+      "status": "draft",
+      "category": "C",
+      "note_url": "https://note.com/n/nc6a5dd13caea",
+      "note_id": "nc6a5dd13caea",
+      "draft_posted_at": "2026-04-05T11:52:00+09:00",
+      "note": "cmd_1171で下書き投稿。カバー画像なし。ハッシュタグ未設定。"
+    },
+    {
+      "filename": "02_skill_placement.md",
+      "source_dir": "work/drafts_20260404",
+      "title": "Claude Codeのスキルが発動しない？置き場所1つで全部変わった",
+      "status": "draft",
+      "category": "C",
+      "note_url": "https://note.com/n/n48aeeeb43ee2",
+      "note_id": "n48aeeeb43ee2",
+      "draft_posted_at": "2026-04-05T11:53:00+09:00",
+      "note": "cmd_1171で下書き投稿。カバー画像なし。ハッシュタグ未設定。"
+    },
+    {
+      "filename": "03_ai_cant_find_code.md",
+      "source_dir": "work/drafts_20260404",
+      "title": "AIエージェントが自分のコードベースを探索できない話",
+      "status": "draft",
+      "category": "C",
+      "note_url": "https://note.com/n/n3d532e49db2c",
+      "note_id": "n3d532e49db2c",
+      "draft_posted_at": "2026-04-05T11:54:00+09:00",
+      "note": "cmd_1171で下書き投稿。カバー画像なし。ハッシュタグ未設定。"
+    },
+    {
+      "filename": "04_cdp_manga_prompt.md",
+      "source_dir": "work/drafts_20260404",
+      "title": "Geminiに漫画を描かせるプロンプト設計 — 試行錯誤20回の記録",
+      "status": "draft",
+      "category": "C",
+      "note_url": "https://note.com/n/n5169c4104358",
+      "note_id": "n5169c4104358",
+      "draft_posted_at": "2026-04-05T11:55:00+09:00",
+      "note": "cmd_1171で下書き投稿。カバー画像なし。ハッシュタグ未設定。"
+    },
+    {
+      "filename": "05_telephone_game.md",
+      "source_dir": "work/drafts_20260404",
+      "title": "マルチエージェントの\"伝言ゲーム問題\"と対策",
+      "status": "draft",
+      "category": "C",
+      "note_url": "https://note.com/n/n006f337d0dee",
+      "note_id": "n006f337d0dee",
+      "draft_posted_at": "2026-04-05T11:56:00+09:00",
+      "note": "cmd_1171で下書き投稿。カバー画像なし。ハッシュタグ未設定。"
+    }
+  ],
+  "summary": {
+    "total": 42,
+    "published": 21,
+    "draft": 16,
+    "duplicate": 5
+  }
+}
