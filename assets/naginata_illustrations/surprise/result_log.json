@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "images": [
+    "/home/murakami/multi-agent-shogun/projects/note_mcp_server/assets/naginata_illustrations/surprise/gemini_image_20260405_193656_00.jpg"
+  ],
+  "error": null,
+  "prompt": "Anime/light novel style illustration of a character with white short hair, green eyes, red scarf, blue mantle, and brown boots. Upper body to above knees. Simple white background. The character is looking at a smartphone with wide eyes and an open mouth, expressing great surprise at a notification. Dynamic pose leaning slightly forward. High quality anime illustration. 上半身〜膝上、白背景、アニメ・ライトノベル風の画風",
+  "ref_images": [
+    "/home/murakami/multi-agent-shogun/projects/note_mcp_server/assets/naginata_tachie.png"
+  ],
+  "ref_attached": true,
+  "timestamp": "2026-04-05T19:36:57.635931"
+}
