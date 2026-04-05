@@ -1050,9 +1050,24 @@ async function applyMarkdownToEditor(page, markdownText) {
         await page.keyboard.press('Enter');
       }
 
-    } else if (line.startsWith('| ') || line.startsWith('|---')) {
-      // Table — not supported by note.com editor; emit warning and skip
-      console.warn('[markdown] テーブル記法はnote非対応のためスキップします:', line);
+    } else if (line.startsWith('| ') && !line.startsWith('|---')) {
+      // Table row: convert to plain text (note.com does not support tables)
+      if (inList) { await page.keyboard.press('Enter'); inList = false; }
+      if (inQuote) { await page.keyboard.press('Enter'); inQuote = false; }
+      const cells = line.replace(/^\||\|$/g, '').split('|').map(c => c.trim());
+      const textLine = cells.join(' ｜ ');
+      await applyInlineContent(page, textLine);
+      const nextLine = lines[i + 1];
+      if (!nextLine || (!nextLine.startsWith('| ') && !nextLine.startsWith('|---'))) {
+        await page.keyboard.press('Enter');
+        await page.keyboard.press('Enter');
+      } else {
+        await page.keyboard.press('Enter');
+      }
+    } else if (line.startsWith('|---') || line.match(/^\|[\s\-:]+\|/)) {
+      // Table separator row: skip silently
+    } else if (line.trim().startsWith('<!--') && line.trim().endsWith('-->')) {
+      // HTML comment: skip silently (used for editorial notes like image placeholders)
 
     } else if (line.trim() !== '') {
       // Plain paragraph text (may contain inline bold/links)
