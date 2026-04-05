@@ -477,6 +477,18 @@ async function setHashtags(page, hashtags) {
   }
 
   if (!tagInput) {
+    // In note.com's new editor, tags are in the publish settings dialog
+    // Click "公開に進む" to open the publish settings
+    const publishBtn = await page.$('button:has-text("公開に進む")');
+    if (publishBtn) {
+      console.log('[hashtag] 「公開に進む」をクリックしてタグ設定パネルを開きます');
+      await publishBtn.click();
+      await page.waitForTimeout(2000);
+      tagInput = await findTagInput();
+    }
+  }
+
+  if (!tagInput) {
     console.log('[hashtag] WARNING: タグ入力フィールドが見つかりません。スキップします。');
     return;
   }
@@ -488,6 +500,14 @@ async function setHashtags(page, hashtags) {
     await page.keyboard.press('Enter');
     await page.waitForTimeout(400);
     console.log('[hashtag] タグ追加:', tag);
+  }
+
+  // If we opened publish dialog, go back to editor (do NOT publish)
+  const backBtn = await page.$('button:has-text("戻る")');
+  if (backBtn) {
+    await backBtn.click();
+    await page.waitForTimeout(1500);
+    console.log('[hashtag] 公開設定パネルを閉じてエディタに戻りました');
   }
 
   // Save draft after setting hashtags
