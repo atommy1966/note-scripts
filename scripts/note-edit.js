@@ -940,6 +940,9 @@ async function applyMarkdownToEditor(page, markdownText) {
       await page.keyboard.press('Enter');
       await page.waitForTimeout(2000); // Wait for embed card conversion
 
+    } else if (line.startsWith('# ') && !line.startsWith('## ') && !line.startsWith('### ')) {
+      // H1 heading: note.com uses article title separately; skip from body
+
     } else if (line.startsWith('## ')) {
       // H2 heading: input rule fires on "## " → Enter exits heading to new paragraph
       if (inList) { await page.keyboard.press('Enter'); inList = false; }
