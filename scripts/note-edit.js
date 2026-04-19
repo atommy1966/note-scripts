@@ -147,6 +147,15 @@ async function ensureLoggedIn(page) {
   }
 
   console.log('[auth] セッション切れ — ログイン実行');
+
+  // 空文字認証情報の早期拒否（アカウントロック回避）
+  const email = process.env.NOTE_EMAIL || '';
+  const password = process.env.NOTE_PASSWORD || '';
+  if (!email.trim() || !password.trim()) {
+    console.log('[auth] ERROR: NOTE_EMAIL または NOTE_PASSWORD が未設定・空文字です');
+    return false;
+  }
+
   // ログインフォームへ遷移
   await page.goto('https://note.com/login', { waitUntil: 'networkidle' });
   await page.waitForTimeout(1000);
@@ -772,44 +781,14 @@ async function applyInlineContent(page, text) {
       await page.waitForTimeout(100);
 
     } else if (seg.type === 'link') {
-      // Type link text first
+      // Link: output link text inline, then URL on a separate line.
+      // note.com auto-converts standalone URLs to OGP embed cards.
+      // Ctrl+K inline link was abandoned — it breaks cursor position and
+      // corrupts subsequent input rules (##, ###, - list).
       await page.keyboard.type(seg.content);
-      await page.waitForTimeout(300);
-      // Select the typed text by moving left
-      for (let j = 0; j < seg.content.length; j++) {
-        await page.keyboard.press('Shift+ArrowLeft');
-      }
-      await page.waitForTimeout(300);
-      // Use Ctrl+K keyboard shortcut to open inline link dialog.
-      // NOTE: The toolbar リンク button creates a link CARD (block element) not inline link.
-      // Ctrl+K correctly opens the inline URL input while preserving the selection.
-      await page.keyboard.press('Control+k');
-      await page.waitForTimeout(500);
-      // Wait for URL input and scroll it into view using element handle (avoids viewport issues)
-      await page.waitForSelector('textarea[placeholder="https://"]', { timeout: 5000 });
-      // Use JS focus+value to bypass viewport constraints (popup may be off-screen)
-      await page.evaluate((url) => {
-        const el = document.querySelector('textarea[placeholder="https://"]');
-        if (el) {
-          el.focus();
-          // Trigger React synthetic event to update state
-          const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, 'value').set;
-          nativeInputValueSetter.call(el, url);
-          el.dispatchEvent(new Event('input', { bubbles: true }));
-          el.dispatchEvent(new Event('change', { bubbles: true }));
-        }
-      }, seg.url);
-      await page.waitForTimeout(300);
-      // Click the "適用" (Apply) button via JS to bypass viewport constraints.
-      await page.evaluate(() => {
-        for (const btn of document.querySelectorAll('button')) {
-          if (btn.textContent.trim() === '適用') { btn.click(); return; }
-        }
-      });
-      await page.waitForTimeout(500);
-      // Move cursor past the link to deselect
-      await page.keyboard.press('ArrowRight');
-      await page.waitForTimeout(200);
+      // Collect URL — will be emitted after the current line ends
+      if (!page.__pendingUrls) page.__pendingUrls = [];
+      page.__pendingUrls.push(seg.url);
     }
   }
 }
@@ -1071,6 +1050,31 @@ async function applyMarkdownToEditor(page, markdownText) {
       // Table separator row: skip silently
     } else if (line.trim().startsWith('<!--') && line.trim().endsWith('-->')) {
       // HTML comment: skip silently (used for editorial notes like image placeholders)
+    } else if (/^-{3,}$/.test(line.trim()) || /^\*{3,}$/.test(line.trim()) || /^_{3,}$/.test(line.trim())) {
+      // Thematic break (---, ***, ___): skip silently
+      // note.com editor's ProseMirror input rule for --- is unreliable and breaks subsequent ## headings
+
+    } else if (line.trim() === '') {
+      // Blank line: paragraph separator in Markdown
+      // After list/quote exit, DOM cursor may still be inside the block element.
+      // Verify and force exit if needed.
+      if (inList || inQuote) {
+        await page.keyboard.press('Enter');
+        if (inList) inList = false;
+        if (inQuote) inQuote = false;
+      }
+      // Check if cursor is stuck inside a list item (DOM state may diverge from inList flag)
+      const stuckInList = await page.evaluate(() => {
+        const sel = window.getSelection();
+        if (!sel || !sel.anchorNode) return false;
+        const el = sel.anchorNode.nodeType === 3 ? sel.anchorNode.parentElement : sel.anchorNode;
+        return !!el.closest('li, ul, ol');
+      });
+      if (stuckInList) {
+        console.log('[markdown] blank line: cursor stuck in list, forcing exit');
+        await page.keyboard.press('Enter');
+        await page.keyboard.press('Enter');
+      }
 
     } else if (line.trim() !== '') {
       // Plain paragraph text (may contain inline bold/links)
@@ -1090,16 +1094,11 @@ async function applyMarkdownToEditor(page, markdownText) {
         // Last content line: no Enter
       } else if (!nextLine || nextLine.trim() === '') {
         // Next is blank line (Markdown paragraph separator)
-        // Check what comes AFTER the blank line(s)
-        if (nextNonEmpty && /^(#{2,3} |> |- |```|https?:\/\/|!\[)/.test(nextNonEmpty)) {
-          // Input rule line after blank: Enter×2 (new paragraph block required)
-          await page.keyboard.press('Enter');
-          await page.keyboard.press('Enter');
-        } else {
-          // Regular text paragraph after blank: Enter×1 (<br> only)
-          // This matches how humans type in note.com — single Enter between paragraphs
-          await page.keyboard.press('Enter');
-        }
+        // Always Enter×2 to create a new paragraph block.
+        // Enter×1 only creates <br> within same block, which breaks input rules (##, ###)
+        // for any subsequent lines.
+        await page.keyboard.press('Enter');
+        await page.keyboard.press('Enter');
       } else if (/^(#{2,3} |> |- |```|https?:\/\/|!\[)/.test(nextLine)) {
         // Input rule line follows directly (no blank line): Enter×2
         await page.keyboard.press('Enter');
@@ -1110,8 +1109,20 @@ async function applyMarkdownToEditor(page, markdownText) {
       }
 
     }
-    // Empty lines: skipped (Enter×2 after paragraph text provides sufficient block separation)
+
+    // Emit pending URLs (from link segments) after the current line
+    if (page.__pendingUrls && page.__pendingUrls.length > 0) {
+      for (const url of page.__pendingUrls) {
+        await page.keyboard.press('Enter');
+        await page.keyboard.type(url);
+        await page.waitForTimeout(2000); // Wait for OGP card conversion
+        await page.keyboard.press('Enter');
+      }
+      page.__pendingUrls = [];
+    }
   }
+  // Clean up
+  delete page.__pendingUrls;
 }
 
 /**

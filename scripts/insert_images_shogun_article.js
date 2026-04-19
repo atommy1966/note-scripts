@@ -23,7 +23,7 @@ const { chromium } = require('@playwright/test');
 const fs = require('fs');
 const path = require('path');
 
-const USER_DATA_DIR = '/home/murakami/.cache/ms-playwright/note-profile';
+const USER_DATA_DIR = '/home/murakami/.cache/ms-playwright/note-cli-profile';
 const NOTE_EDITOR_URL = 'https://editor.note.com/notes/nedb886542772/edit/';
 const IMAGES_DIR = path.resolve('/home/murakami/multi-agent-shogun/projects/note_mcp_server/assets/naginata_illustrations');
 
@@ -132,10 +132,16 @@ async function findAndClickAfterText(page, searchText) {
   const cursorCtx = await getCursorContext(page);
   if (cursorCtx && cursorCtx.includes('LI')) {
     console.log('[find] カーソルがLI内、外に逃します');
-    await page.keyboard.press('Escape');
+    // Press Down arrow to move cursor out of the list
+    await page.keyboard.press('ArrowDown');
+    await page.waitForTimeout(300);
+    await page.keyboard.press('ArrowDown');
     await page.waitForTimeout(300);
     // Click directly below the element to escape list context
-    await page.mouse.click(box.x + box.width / 2, box.y + box.height + 30);
+    await page.mouse.click(box.x + box.width / 2, box.y + box.height + 50);
+    await page.waitForTimeout(500);
+    // Press Enter to create new paragraph
+    await page.keyboard.press('Enter');
     await page.waitForTimeout(500);
   }
 
@@ -254,6 +260,10 @@ async function uploadImageAtCursor(page, imagePath, captionText) {
   const insertedImages = [];
   for (const imageInfo of IMAGES) {
     console.log(`\n--- ${imageInfo.label} 挿入開始 ---`);
+
+    // Reload page before each image to ensure fresh DOM state
+    await page.reload({ waitUntil: 'networkidle', timeout: 30000 });
+    await page.waitForTimeout(3000);
 
     const found = await findAndClickAfterText(page, imageInfo.afterText);
     if (!found) {

@@ -69,7 +69,7 @@ for (const img of IMAGES) {
   }
 }
 
-const USER_DATA_DIR = '/home/murakami/.cache/ms-playwright/note-profile';
+const USER_DATA_DIR = '/home/murakami/.cache/ms-playwright/note-cli-profile';
 
 async function findAndClickAfterText(page, searchText) {
   const found = await page.evaluate((text) => {
