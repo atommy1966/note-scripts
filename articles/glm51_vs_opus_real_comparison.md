@@ -2,7 +2,7 @@
 
 AIエージェントを複数体動かすのに月3万円以上かかっていた。
 
-「同じ品質で年間18万円節約できないか？」
+「同じ品質で年間16万円節約できないか？」
 
 そう思って、中国発のAIモデル「GLM-5.1」をガチで検証した話。
 
@@ -136,7 +136,7 @@ SonnetはProプラン（$20/月）でも使えるが、複数エージェント�
 
 ![最終構成（役割別モデル配置）](/home/murakami/multi-agent-shogun/projects/note_mcp_server/articles/glm51_tables/table_4.png)
 
-![コスト比較（年間18万円削減）](/home/murakami/multi-agent-shogun/projects/note_mcp_server/articles/glm51_tables/table_5.png)
+![コスト比較（年間16万円削減）](/home/murakami/multi-agent-shogun/projects/note_mcp_server/articles/glm51_tables/table_5.png)
 
 ---
 
@@ -163,7 +163,7 @@ SonnetはProプラン（$20/月）でも使えるが、複数エージェント�
 - **難しいタスク（L4+）はOpusが別格。批判的思考と文脈理解で差がつく**
 - **SonnetとGLM-5.1は難問で僅差。コスト差を考えるとGLM-5.1が合理的**
 - **「全員最上位モデル」は過剰。役割に応じてモデルを使い分けるのが正解**
-- **年間18万円の節約は、品質を落とさずに実現できる**
+- **年間16万円の節約は、品質を落とさずに実現できる**
 
 ![総合比較レーダーチャート（基礎問・難問・速度・コスト・指示遵守の5軸）](/home/murakami/multi-agent-shogun/projects/note_mcp_server/articles/glm51_tables/radar_overall.png)
 

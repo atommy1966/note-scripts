@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "images": [
+    "/home/murakami/multi-agent-shogun/projects/note_mcp_server/assets/naginata_illustrations/gemini_image_20260405_201804_00.jpg"
+  ],
+  "error": null,
+  "prompt": "アニメ・ライトノベル風のイラスト。上半身〜膝上の構図。白髪ショートヘア・緑瞳・赤マフラー・青マント・茶ブーツの少女キャラ（なぎなた）がPC画面を見て両手を高く上げて大喜びしている。画面の周りには祝福のエフェクト（紙吹雪や星）が舞い、数字の1000やパーティーのイメージ。達成感あふれる笑顔の表情。白または薄い色のシンプルな背景。",
+  "ref_images": [
+    "/home/murakami/multi-agent-shogun/projects/note_mcp_server/assets/naginata_tachie.png"
+  ],
+  "ref_attached": true,
+  "timestamp": "2026-04-05T20:18:05.402125"
+}

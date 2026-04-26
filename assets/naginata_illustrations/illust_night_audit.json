@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "output_path": "projects/note_mcp_server/assets/naginata_illustrations/illust_night_audit.jpg",
+  "original_size": "1376x768",
+  "final_size": "1200x670",
+  "elapsed_sec": 90.4,
+  "attempt": 1,
+  "usage": {
+    "prompt_tokens": 87,
+    "total_tokens": 2474
+  }
+}

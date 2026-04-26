@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "output_path": "projects/note_mcp_server/assets/naginata_illustrations/test_cover_sample.jpg",
+  "original_size": "1376x768",
+  "final_size": "1200x670",
+  "elapsed_sec": 63.9,
+  "attempt": 1,
+  "usage": {
+    "prompt_tokens": 1204,
+    "total_tokens": 3792
+  }
+}

@@ -8,11 +8,8 @@ from pathlib import Path
 from google import genai
 from google.genai import types
 
-API_KEY = os.environ.get("GEMINI_API_KEY")
-if not API_KEY:
-    print("ERROR: GEMINI_API_KEY not set"); sys.exit(1)
 
-client = genai.Client(api_key=API_KEY)
+client = genai.Client(vertexai=True, project="gen-lang-client-0119911773", location="global")
 MODEL_ID = "gemini-3.1-flash-image-preview"
 OUTPUT_PATH = Path("/home/murakami/multi-agent-shogun/projects/note_mcp_server/articles/silent_bug_contradiction_detection_cover.png")
 

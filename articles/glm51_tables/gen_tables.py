@@ -158,7 +158,7 @@ def draw_cover():
             color='#ffd54f', ha='center', va='center')
 
     # Tagline
-    ax.text(6.4, 1.4, '基礎問はほぼ互角 ｜ 難問で差が開いた ｜ 年間18万円の節約',
+    ax.text(6.4, 1.4, '基礎問はほぼ互角 ｜ 難問で差が開いた ｜ 年間16万円の節約',
             fontproperties=fp_tag, color='#666666',
             ha='center', va='center')
 
@@ -244,10 +244,10 @@ if __name__ == '__main__':
     # Table 5: Before/After コスト比較
     draw_table(
         data=[
-            ['Max $220/月', 'Max 税込10〜20万円/年'],
+            ['Max $220/月', 'Max $110/月（税込）'],
             ['なし', 'Pro $252/年'],
-            ['約40万円', '約22万円'],
-            ['—', '▲約18万円/年'],
+            ['約40万円', '約24万円'],
+            ['—', '▲約16万円/年'],
         ],
         col_labels=['Before', 'After'],
         row_labels=['Claude', 'GLM', '年間', '節約'],
